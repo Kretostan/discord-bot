@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "type-check": "tsc --noEmit",
     "build": "tsc",
     "start": "node ./src/index.js",
     "biome:lint": "biome lint .",
