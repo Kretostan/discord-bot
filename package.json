@@ -8,13 +8,14 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"type-check": "tsc --noEmit",
 		"build": "tsc",
-		"start": "tsc-watch --onSuccess 'node ./dist/index.js'",
+		"start": "node dist/index.js",
 		"biome:lint": "biome lint .",
 		"biome:format": "biome format .",
-		"biome:check": "biome check ."
+		"biome:check": "biome check .",
+		"deploy:commands": "node dist/deploy-commands.js"
 	},
-	"type": "module",
 	"keywords": [],
+	"type": "module",
 	"author": "",
 	"license": "ISC",
 	"dependencies": {

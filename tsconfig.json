@@ -23,8 +23,6 @@
 		"noFallthroughCasesInSwitch": true,
 
 		"strict": true,
-		"isolatedModules": true,
-		"noUncheckedSideEffectImports": true,
 		"moduleDetection": "force",
 		"skipLibCheck": true,
 		"resolveJsonModule": true,
@@ -32,6 +30,6 @@
 		"allowSyntheticDefaultImports": true,
 		"forceConsistentCasingInFileNames": true
 	},
-	"include": ["src"],
+	"include": ["src/**/*", "types/**/*"],
 	"exclude": ["node_modules", "dist"]
 }
