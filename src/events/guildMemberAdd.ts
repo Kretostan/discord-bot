@@ -1,5 +1,5 @@
 import { Events, userMention, type GuildMember } from "discord.js";
-import { getWelcomeMessage } from "../config/welcomeStore.js";
+import { getWelcomeMessage } from "../db/guildSettings.js";
 
 export default {
     name: Events.GuildMemberAdd,

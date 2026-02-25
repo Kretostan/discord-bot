@@ -1,5 +1,5 @@
 import { SlashCommandBuilder, MessageFlags, type Interaction } from "discord.js";
-import { setWelcomeMessage } from "../../config/welcomeStore.js";
+import { setWelcomeMessage } from "../../db/guildSettings.js";
 
 export default {
     data: new SlashCommandBuilder()
