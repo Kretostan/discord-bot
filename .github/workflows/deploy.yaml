@@ -47,6 +47,9 @@ jobs:
           port: ${{ secrets.PORT }}
           source: "."
           target: '/home/ubuntu/discord-bot'
+          exclude: |
+            node_modules
+            .git
 
       - name: Deploy on VPS
         uses: appleboy/ssh-action@v1.0.3
