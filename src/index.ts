@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import "./utils/dotenv.js";
+import "./utils/dotenv";
 import { Client, Collection, GatewayIntentBits } from "discord.js";
 
 const token = String(process.env.DISCORD_TOKEN);
