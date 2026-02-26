@@ -50,20 +50,20 @@ const rest = new REST().setToken(token);
 				Routes.applicationGuildCommands(clientId, guildId),
 				{ body: commands },
 			);
-            if (Array.isArray(data)) {
-                console.log(
-                    `Successfully reloaded ${data.length} application (/) commands in dev mode.`,
-                );
-            }
+			if (Array.isArray(data)) {
+				console.log(
+					`Successfully reloaded ${data.length} application (/) commands in dev mode.`,
+				);
+			}
 		} else {
 			const data = await rest.put(Routes.applicationCommands(clientId), {
 				body: commands,
 			});
 			if (Array.isArray(data)) {
-                console.log(
-                    `Successfully reloaded ${data.length} application (/) commands in prod mode.`,
-                );
-            }
+				console.log(
+					`Successfully reloaded ${data.length} application (/) commands in prod mode.`,
+				);
+			}
 		}
 	} catch (error) {
 		// And of course, make sure you catch and log any errors!
