@@ -12,17 +12,17 @@ const insertOrReplaceStmt = db.prepare(`
 `);
 
 export function setWelcomeMessage(guildId: string, message: string) {
-    insertOrReplaceStmt.run(guildId, message);
+	insertOrReplaceStmt.run(guildId, message);
 }
 
 type GuildSettingsRow = {
-    guild_id: string;
-    guild_message: string;
-}
+	guild_id: string;
+	guild_message: string;
+};
 
 export function getWelcomeMessage(guildId: string) {
-    const row = selectStmt.get(guildId) as GuildSettingsRow | undefined;
-    if (!row) return null;
+	const row = selectStmt.get(guildId) as GuildSettingsRow | undefined;
+	if (!row) return null;
 
-    return row.guild_message;
+	return row.guild_message;
 }

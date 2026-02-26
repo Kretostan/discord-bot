@@ -38,6 +38,16 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Remove old files
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            rm -rf /home/***/discord-bot/*
+
       - name: Copy files to VPS
         uses: appleboy/scp-action@v1
         with: 
@@ -47,9 +57,6 @@ jobs:
           port: ${{ secrets.PORT }}
           source: "."
           target: '/home/ubuntu/discord-bot'
-          exclude: |
-            node_modules
-            .git
 
       - name: Deploy on VPS
         uses: appleboy/ssh-action@v1.0.3
