@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import Database from "better-sqlite3";
-import { schemaSql } from "./schema";
+import { schemaSql } from "./schema.js";
 
 const DB_DIR = path.join(process.cwd(), "db");
 const DB_PATH = path.join(DB_DIR, "bot.db");

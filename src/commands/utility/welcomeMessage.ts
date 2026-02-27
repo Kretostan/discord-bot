@@ -4,7 +4,7 @@ import {
 	PermissionFlagsBits,
 	SlashCommandBuilder,
 } from "discord.js";
-import { setWelcomeMessage } from "../../db/guildSettings";
+import { setWelcomeMessage } from "../../db/guildSettings.js";
 
 export default {
 	data: new SlashCommandBuilder()

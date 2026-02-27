@@ -3,9 +3,9 @@
 		"rootDir": "./src",
 		"outDir": "./dist",
 
-		"module": "ESNext",
+		"module": "NodeNext",
 		"target": "es2020",
-		"moduleResolution": "Node",
+		"moduleResolution": "NodeNext",
 		"types": ["node"],
 
 		"sourceMap": true,
