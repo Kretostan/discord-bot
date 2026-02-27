@@ -68,4 +68,4 @@ jobs:
           script: |
             echo "Deploying Kretobot..."
             export PATH=$PATH:/home/ubuntu/.nvm/versions/node/v22.18.0/bin
-            pm2 reload discord-bot --update-env
+            NODE_ENV=production pm2 reload discord-bot --update-env
