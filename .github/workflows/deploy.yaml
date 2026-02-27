@@ -67,5 +67,5 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             echo "Deploying Kretobot..."
-            export PATH=$PATH:/home/ubuntu/.nvm/versions/node/v22.18.0/bin
+            export PATH=$PATH:/home/ubuntu/.nvm/versions/node/v25.7.0/bin
             NODE_ENV=production pm2 reload discord-bot --update-env
