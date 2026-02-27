@@ -14,7 +14,7 @@
 		"biome:check": "biome check .",
 		"deploy:commands": "node dist/deploy-commands.js"
 	},
-    "type": "module",
+	"type": "module",
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
