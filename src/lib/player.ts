@@ -1,6 +1,7 @@
 import { Player } from "discord-player";
 import { type Client } from "discord.js";
 import { DefaultExtractors } from "@discord-player/extractor";
+import { YoutubeSabrExtractor } from "discord-player-googlevideo";
 
 let playerInstance: Player | null = null;
 
@@ -10,6 +11,7 @@ export async function initPlayer(client: Client): Promise<Player> {
   const player = new Player(client as any);
 
   await player.extractors.loadMulti(DefaultExtractors);
+  await player.extractors.register(YoutubeSabrExtractor, {});
 
   console.log("Registered extractors: ", player.extractors.store.map(e => e.identifier));
 
