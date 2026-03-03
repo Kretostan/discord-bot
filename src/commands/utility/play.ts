@@ -1,11 +1,18 @@
-import { SlashCommandBuilder, ChatInputCommandInteraction, MessageFlags, GuildMember } from "discord.js";
+import {
+  type ChatInputCommandInteraction,
+  type GuildMember,
+  MessageFlags,
+  SlashCommandBuilder,
+} from "discord.js";
 import { getPlayer } from "../../lib/player.js";
 
 export default {
   data: new SlashCommandBuilder()
     .setName("play")
     .setDescription("Play music from a URL or search query")
-    .addStringOption(option => option.setName("query").setDescription("YouTube URL or search query")),
+    .addStringOption((option) =>
+      option.setName("query").setDescription("YouTube URL or search query"),
+    ),
   async execute(interaction: ChatInputCommandInteraction) {
     const player = getPlayer();
 
@@ -26,7 +33,7 @@ export default {
       });
     }
 
-    let query = interaction.options.getString("query", true);
+    const query = interaction.options.getString("query", true);
     await interaction.deferReply();
 
     try {
@@ -38,5 +45,5 @@ export default {
       return interaction.followUp(`Something went wrong:\n${error}`);
     }
     return;
-  }
-}
+  },
+};
