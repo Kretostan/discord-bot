@@ -1,11 +1,11 @@
-import { Player } from "discord-player";
-import { type Client } from "discord.js";
 import { DefaultExtractors } from "@discord-player/extractor";
+import type { Client } from "discord.js";
+import { Player } from "discord-player";
 import { YoutubeSabrExtractor } from "discord-player-googlevideo";
 
 let playerInstance: Player | null = null;
 
-export async function initPlayer(client: Client): Promise<Player> {
+export async function initPlayer(client: Client<true>): Promise<Player> {
   if (playerInstance) return playerInstance;
 
   const player = new Player(client as any);
@@ -13,7 +13,10 @@ export async function initPlayer(client: Client): Promise<Player> {
   await player.extractors.loadMulti(DefaultExtractors);
   await player.extractors.register(YoutubeSabrExtractor, {});
 
-  console.log("Registered extractors: ", player.extractors.store.map(e => e.identifier));
+  console.log(
+    "Registered extractors: ",
+    player.extractors.store.map((e) => e.identifier),
+  );
 
   player.events.on("playerStart", () => {
     console.log("[playerStart]");
@@ -43,7 +46,7 @@ export async function initPlayer(client: Client): Promise<Player> {
     console.log("[emptyQueue]");
   });
 
-  player.events.on('debug', (_, message) => {
+  player.events.on("debug", (_, message) => {
     console.log("[debug]", message);
   });
 

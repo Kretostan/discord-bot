@@ -7,7 +7,7 @@ const DB_DIR = path.join(process.cwd(), "db");
 const DB_PATH = path.join(DB_DIR, "bot.db");
 
 if (!fs.existsSync(DB_DIR)) {
-	fs.mkdirSync(DB_DIR, { recursive: true });
+  fs.mkdirSync(DB_DIR, { recursive: true });
 }
 
 const db = new Database(DB_PATH);

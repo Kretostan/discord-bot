@@ -1,35 +1,37 @@
 {
-	"compilerOptions": {
-		"rootDir": "./src",
-		"outDir": "./dist",
-
-		"module": "NodeNext",
-		"target": "es2020",
-		"moduleResolution": "NodeNext",
-		"types": ["node"],
-
-		"sourceMap": true,
-		"declaration": false,
-		"declarationMap": false,
-
-		"noUncheckedIndexedAccess": true,
-		"exactOptionalPropertyTypes": true,
-		"esModuleInterop": true,
-
-		"noImplicitReturns": true,
-		"noImplicitOverride": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"noFallthroughCasesInSwitch": true,
-
-		"strict": true,
-		"moduleDetection": "force",
-		"skipLibCheck": true,
-		"resolveJsonModule": true,
-
-		"allowSyntheticDefaultImports": true,
-		"forceConsistentCasingInFileNames": true
-	},
-	"include": ["src/**/*", "types/**/*"],
-	"exclude": ["node_modules", "dist"]
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "module": "NodeNext",
+    "target": "es2020",
+    "moduleResolution": "NodeNext",
+    "types": [
+      "node"
+    ],
+    "sourceMap": true,
+    "declaration": false,
+    "declarationMap": false,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "esModuleInterop": true,
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "strict": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "src/**/*",
+    "types/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
