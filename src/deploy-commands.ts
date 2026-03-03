@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import "./utils/dotenv";
+import "./utils/dotenv.js";
 import { REST, Routes } from "discord.js";
 
 const __dirname = import.meta.dirname;
