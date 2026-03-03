@@ -23,6 +23,9 @@
       "recommended": true,
       "correctness": {
         "useUniqueElementIds": "off"
+      },
+      "suspicious": {
+        "noExplicitAny": "off"
       }
     }
   },
