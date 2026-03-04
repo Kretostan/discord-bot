@@ -1,5 +1,5 @@
-import { BG, buildURL, GOOG_API_KEY, USER_AGENT } from "bgutils-js";
 import type { WebPoSignalOutput } from "bgutils-js";
+import { BG, buildURL, GOOG_API_KEY, USER_AGENT } from "bgutils-js";
 import { JSDOM } from "jsdom";
 import { Innertube } from "youtubei.js";
 
