@@ -11,7 +11,10 @@ export async function initPlayer(client: Client<true>): Promise<Player> {
   const player = new Player(client as any);
 
   await player.extractors.loadMulti(DefaultExtractors);
-  await player.extractors.register(YoutubeSabrExtractor, {});
+  await player.extractors.register(YoutubeSabrExtractor, {
+    poToken: process.env.YT_PO_TOKEN,
+    visitorData: process.env.YT_VISITOR_DATA,
+  });
 
   console.log(
     "Registered extractors: ",
