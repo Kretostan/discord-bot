@@ -1,0 +1,54 @@
+name: Refresh YouTube poToken
+
+on:
+  schedule:
+    - cron: '0 */20 * * *'
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 25
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      - name: Generate poToken
+        id: generate
+        run: |
+          RESULT=$(node dist/scripts/generate-po-token.js)
+          echo "po_token=$(echo "$RESULT" | jq -r '.poToken')" >> "$GITHUB_OUTPUT"
+          echo "visitor_data=$(echo "$RESULT" | jq -r '.visitorData')" >> "$GITHUB_OUTPUT"
+
+      - name: Update .env on VPS and restart bot
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            sed -i '/^YT_PO_TOKEN=/d' /home/ubuntu/discord-bot/.env
+            sed -i '/^YT_VISITOR_DATA=/d' /home/ubuntu/discord-bot/.env
+            echo "YT_PO_TOKEN=${{ steps.generate.outputs.po_token }}" >> /home/ubuntu/discord-bot/.env
+            echo "YT_VISITOR_DATA=${{ steps.generate.outputs.visitor_data }}" >> /home/ubuntu/discord-bot/.env
+            export PATH=$PATH:/home/ubuntu/.nvm/versions/node/v25.7.0/bin
+            pm2 reload discord-bot --update-env
