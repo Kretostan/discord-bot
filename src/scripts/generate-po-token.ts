@@ -17,7 +17,7 @@ const dom = new JSDOM(
   {
     url: "https://www.youtube.com/",
     referrer: "https://www.youtube.com/",
-    resources: { userAgent: USER_AGENT },
+    userAgent: USER_AGENT,
   },
 );
 
