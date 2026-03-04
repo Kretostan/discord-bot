@@ -35,7 +35,8 @@
     "jsdom": "^28.1.0",
     "mediaplex": "^1.0.0",
     "play-dl": "^1.9.7",
-    "sodium-native": "^5.0.10"
+    "sodium-native": "^5.0.10",
+    "youtubei.js": "^16.0.1"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
