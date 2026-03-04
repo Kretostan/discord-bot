@@ -69,7 +69,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.PORT }}
           source: "."
-          target: '/home/ubuntu/discord-bot'
+          target: '/home/${{ secrets.USERNAME }}/discord-bot'
 
       - name: Deploy on VPS
         uses: appleboy/ssh-action@v1.0.3
@@ -80,5 +80,5 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             echo "Deploying Kretobot..."
-            export PATH=$PATH:/home/ubuntu/.nvm/versions/node/v25.7.0/bin
+            export PATH=$PATH:/home/${{ secrets.USERNAME }}/.nvm/versions/node/v25.7.0/bin
             NODE_ENV=production pm2 reload discord-bot --update-env

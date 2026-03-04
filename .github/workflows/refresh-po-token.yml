@@ -46,9 +46,9 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            sed -i '/^YT_PO_TOKEN=/d' /home/ubuntu/discord-bot/.env
-            sed -i '/^YT_VISITOR_DATA=/d' /home/ubuntu/discord-bot/.env
-            echo "YT_PO_TOKEN=${{ steps.generate.outputs.po_token }}" >> /home/ubuntu/discord-bot/.env
-            echo "YT_VISITOR_DATA=${{ steps.generate.outputs.visitor_data }}" >> /home/ubuntu/discord-bot/.env
-            export PATH=$PATH:/home/ubuntu/.nvm/versions/node/v25.7.0/bin
+            sed -i '/^YT_PO_TOKEN=/d' /home/${{ secrets.USERNAME }}/discord-bot/.env
+            sed -i '/^YT_VISITOR_DATA=/d' /home/${{ secrets.USERNAME }}/discord-bot/.env
+            echo "YT_PO_TOKEN=${{ steps.generate.outputs.po_token }}" >> /home/${{ secrets.USERNAME }}/discord-bot/.env
+            echo "YT_VISITOR_DATA=${{ steps.generate.outputs.visitor_data }}" >> /home/${{ secrets.USERNAME }}/discord-bot/.env
+            export PATH=$PATH:/home/${{ secrets.USERNAME }}/.nvm/versions/node/v25.7.0/bin
             pm2 reload discord-bot --update-env
