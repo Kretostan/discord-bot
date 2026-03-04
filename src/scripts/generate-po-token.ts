@@ -1,6 +1,6 @@
 import type { WebPoSignalOutput } from "bgutils-js";
 import { BG, buildURL, GOOG_API_KEY, USER_AGENT } from "bgutils-js";
-import { JSDOM, ResourceLoader } from "jsdom";
+import { JSDOM } from "jsdom";
 import { Innertube } from "youtubei.js";
 
 const innertube = await Innertube.create({ retrieve_player: false });
@@ -17,7 +17,8 @@ const dom = new JSDOM(
   {
     url: "https://www.youtube.com/",
     referrer: "https://www.youtube.com/",
-    resources: new ResourceLoader({ userAgent: USER_AGENT }),
+    userAgent: USER_AGENT,
+    resources: "usable",
   },
 );
 
