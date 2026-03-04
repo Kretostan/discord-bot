@@ -59,7 +59,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            rm -rf /home/ubuntu/discord-bot/*
+            rm -rf /home/***/discord-bot/*
 
       - name: Copy files to VPS
         uses: appleboy/scp-action@v1
