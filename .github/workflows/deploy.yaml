@@ -29,16 +29,27 @@ jobs:
       - name: Biome check (lint + format)
         run: npx biome check .
 
+      - name: Build
+        run: pnpm build
+
+      - name: Generate poToken
+        id: generate
+        run: |
+          RESULT=$(node dist/scripts/generate-po-token.js)
+          PO_TOKEN=$(echo "$RESULT" | jq -r '.poToken')
+          VISITOR_DATA=$(echo "$RESULT" | jq -r '.visitorData')
+          echo "::add-mask::$PO_TOKEN"
+          echo "::add-mask::$VISITOR_DATA"
+          echo "po_token=$PO_TOKEN" >> "$GITHUB_OUTPUT"
+          echo "visitor_data=$VISITOR_DATA" >> "$GITHUB_OUTPUT"
+
       - name: Create env file
         run: |
           echo "CLIENT_ID=${{ secrets.CLIENT_ID }}" >> .env
           echo "DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }}" >> .env
           echo "GUILD_TOKEN=${{ secrets.GUILD_ID }}" >> .env
-          echo "YT_PO_TOKEN=${{ secrets.YT_PO_TOKEN }}" >> .env
-          echo "YT_VISITOR_DATA=${{ secrets.YT_VISITOR_DATA }}" >> .env
-
-      - name: Build
-        run: pnpm build
+          echo "YT_PO_TOKEN=${{ steps.generate.outputs.po_token }}" >> .env
+          echo "YT_VISITOR_DATA=${{ steps.generate.outputs.visitor_data }}" >> .env
 
       - name: Remove old files
         uses: appleboy/ssh-action@v1.0.3
